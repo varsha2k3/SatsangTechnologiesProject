@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function fetchAndDisplayQuestions() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    fetch(`https://varsha2k3.github.io/server/api/questions?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`)
+    fetch(`https://raw.githubusercontent.com/varsha2k3/server/server.js/api/questions?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`)
       .then(response => response.json())
       .then(data => {
         const questions = data.questions;
