@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Fetch questions from backend and display them
+  //Fetch questions from backend and display them
   function fetchAndDisplayQuestions() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    fetch(`/api/questions?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`)
+    fetch(`https://varsha2k3.github.io/server/api/questions?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`)
       .then(response => response.json())
       .then(data => {
         const questions = data.questions;
