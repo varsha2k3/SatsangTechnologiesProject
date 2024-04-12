@@ -15,17 +15,23 @@ document.addEventListener('DOMContentLoaded', () => {
   function fetchAndDisplayQuestions() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    fetch(` https://varsha2k3.github.io/server/server.js/api/questions?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`)
-      .then(response => response.json())
-      .then(data => {
+    fetch(`https://varsha2k3.github.io/server/server.js/api/questions?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
         const questions = data.questions;
         shuffleArray(questions);
         const randomQuestions = questions.slice(0, 5);
         displayQuestions(randomQuestions);
-      })
-      .catch(error => {
-        console.error('Error fetching questions:', error);
-      });
+    })
+    .catch(error => {
+        console.error('Error fetching questions:', error.message);
+    });
+
   }
 
   // Display questions with choices in the form
